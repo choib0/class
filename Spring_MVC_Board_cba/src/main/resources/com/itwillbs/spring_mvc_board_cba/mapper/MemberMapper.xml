@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.itwillbs.spring_mvc_board_cba.mapper.MemberMapper">
+  
+  <insert id="insertMember">
+		INSERT
+			INTO member
+			VALUES (
+				null
+				,#{name}
+				,#{id}
+				,#{passwd}
+<!-- 				,#{email} -->
+				,CONCAT(#{email1}, '@', #{email2})
+				,#{gender}
+				,now()
+				,'N'
+			)
+	</insert>
+	
+	<!-- 패스워드 조회 -->
+	<select id="selectPasswd" resultType="string">
+		SELECT passwd
+			FROM member
+			WHERE id=#{id}
+	</select>
+	
+	<!-- 회원 정보 조회 -->
+	<select id="selectMemberInfo" resultType="com.itwillbs.spring_mvc_board_cba.vo.MemberVO">
+		SELECT *
+			FROM member
+			WHERE id = #{id}
+	</select>
+	
+	<!-- 회원 정보 수정(이메일, 이름, 성별 + 비밀번호) -->
+	<update id="updateMemberInfo">
+		UPDATE member
+			SET 
+				name = #{member.name}
+				,email = CONCAT(#{member.email1}, '@', #{member.email2})
+				,gender = #{member.gender}
+				<if test="newPasswd neq ''">
+				,passwd = #{newPasswd}
+				</if>
+			WHERE
+				id = #{member.id}
+	</update>
+	
+	
+	<!-- 회원 탈퇴 -->
+	<delete id="deleteMember">
+		DELETE
+			FROM member
+			WHERE id = #{id}
+	</delete>
+	
+</mapper>

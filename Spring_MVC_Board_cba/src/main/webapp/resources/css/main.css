@@ -1,0 +1,12 @@
+@charset "UTF-8";
+/* ------------ top.jsp ------------ */
+#member_area {
+	text-align: right;
+}
+
+
+
+/* ------------ index.jsp ------------ */
+article {
+	text-align: center;
+}

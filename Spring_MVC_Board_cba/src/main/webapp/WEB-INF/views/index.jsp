@@ -29,6 +29,7 @@
 		<hr>
 		<h3>spring이 수정</h3>
 		<h3>cba가 추가</h3>
+		<h3>choi가 추가</h3>
 	</article>
 </body>
 </html>
